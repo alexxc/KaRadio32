@@ -55,81 +55,82 @@ static char genre[BUFLEN/2]; // the local name of the station
 
 ////////////////////////////////////////
 typedef enum sizefont  {small, text,middle,large} sizefont;
-void setfont8(sizefont size)
-{
-//	printf("setfont8 size: %d, yy: %d\n",size,yy);
-	switch(size)
-	{
+
+#define font_6x12 u8g2_font_6x12_t_cyrillic
+#define font_5x8 u8g2_font_5x8_t_cyrillic
+#define font_7x14 u8g2_font_7x13_t_cyrillic
+#define font_9x18 u8g2_font_10x20_t_cyrillic
+
+
+void setfont8(sizefont size) {
+	//printf("setfont8 size: %d, yy: %d\n",size,yy);
+	switch(size) {
 		case small:
-		switch(yy)
-		{
+		switch(yy)	{
 			case 200:
-			u8g2_SetFont(&u8g2,u8g2_font_6x12_tf);
-			break;
+                u8g2_SetFont(&u8g2,font_6x12);
+			    break;
 			case 128:
-			u8g2_SetFont(&u8g2,u8g2_font_6x12_tf);
-			break;
+			    u8g2_SetFont(&u8g2,font_6x12);
+			    break;
 			case 32:
-			u8g2_SetFont(&u8g2,u8g2_font_u8glib_4_tr);
-			break;
+			    u8g2_SetFont(&u8g2,u8g2_font_u8glib_4_tr);
+			    break;
 			case 64:
-			default: // 
-			u8g2_SetFont(&u8g2, u8g2_font_5x8_tr);
+			    default: //
+			    u8g2_SetFont(&u8g2, font_5x8);
 			;
 		}
 		break;
 		case text:
-		switch(yy)
-		{
+		switch(yy)	{
 			case 200:
-			u8g2_SetFont(&u8g2,u8g2_font_7x14_tf);
-			break;
+			    u8g2_SetFont(&u8g2,font_7x14);
+			    break;
 			case 128:
-			u8g2_SetFont(&u8g2, u8g2_font_7x14_tf);
-			break;
+			    u8g2_SetFont(&u8g2, font_7x14);
+			    break;
 			case 32:
-			u8g2_SetFont(&u8g2,u8g2_font_5x7_tf);
-			break;
+			    u8g2_SetFont(&u8g2,u8g2_font_5x7_tf);
+			    break;
 			case 64:
 			default: // 
-			u8g2_SetFont(&u8g2, u8g2_font_6x12_tf);
+			    u8g2_SetFont(&u8g2, font_6x12);
 			;
 		}
 		break;
 		case middle:
-		switch(yy)
-		{
-			case 200:
-			u8g2_SetFont(&u8g2, u8g2_font_9x18_tf);
-			break;
+		    switch(yy) {
+		    case 200:
+			    u8g2_SetFont(&u8g2, font_9x18);
+			    break;
 			case 128:
-			u8g2_SetFont(&u8g2, u8g2_font_9x18_tf);
-			break;
+			    u8g2_SetFont(&u8g2, font_9x18);
+			    break;
 			case 32:
-			u8g2_SetFont(&u8g2, u8g2_font_5x8_tf);
-			break;
+			    u8g2_SetFont(&u8g2, font_5x8);
+			    break;
 			case 64:
 			default: // 
-			u8g2_SetFont(&u8g2, u8g2_font_7x14_tf);
+			    u8g2_SetFont(&u8g2, font_7x14);
 			;			
 
 		}
 		break;
 		case large:
-		switch(yy)
-		{
+		switch(yy) {
 			case 200:
-			u8g2_SetFont(&u8g2, u8g2_font_helvR24_tf);
-			break;
+			    u8g2_SetFont(&u8g2, u8g2_font_helvR24_tf);
+			    break;
 			case 128:
-			u8g2_SetFont(&u8g2, u8g2_font_helvR24_tf);
-			break;
+			    u8g2_SetFont(&u8g2, u8g2_font_helvR24_tf);
+			    break;
 			case 32:
-			u8g2_SetFont(&u8g2,  u8g2_font_7x14_tf);
-			break;
+			    u8g2_SetFont(&u8g2,  font_7x14);
+			    break;
 			case 64:
 			default: // 
-			u8g2_SetFont(&u8g2, u8g2_font_ncenR18_tf);
+			    u8g2_SetFont(&u8g2, u8g2_font_ncenR18_tf);
 			;		
 		}
 		break;

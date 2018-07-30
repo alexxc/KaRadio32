@@ -45,7 +45,7 @@ struct icyHeader
 };
 
 
-enum clientStatus {C_HEADER0, C_HEADER, C_HEADER1,C_METADATA, C_DATA, C_PLAYLIST, C_PLAYLIST1 };
+enum clientStatus {C_HEADER0, C_HEADER, C_HEADER1, C_METADATA, C_DATA, C_PLAYLIST, C_PLAYLIST1 };
 
 void clientInit();
 uint8_t clientIsConnected();

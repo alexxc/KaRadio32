@@ -49,8 +49,7 @@ const char strsGSTAT[]  = {"HTTP/1.1 200 OK\r\nContent-Type: application/json\r\
 static int8_t clientOvol = 0;
 
 
-void *inmalloc(size_t n)
-{
+void *inmalloc(size_t n){
 	void* ret;	
 	ESP_LOGV(TAG, "server Malloc of %d %d,  Heap size: %d",n,((n / 32) + 1) * 32,xPortGetFreeHeapSize( ));
 	ret = malloc(n);
@@ -66,19 +65,16 @@ void *inmalloc(size_t n)
 //	if (n <4) printf("Server: incmalloc size:%d\n",n);	
 	return ret;
 }	
-void infree(void *p)
-{
+void infree(void *p) {
 	ESP_LOGV(TAG,"server free of   %x,            Heap size: %d",(int)p,xPortGetFreeHeapSize( ));
 	if (p != NULL)free(p);
 }	
 
 
 
-static struct servFile* findFile(char* name)
-{
+static struct servFile* findFile(char* name) {
 	struct servFile* f = (struct servFile*)&indexFile;
-	while(1)
-	{
+	while(1) {
 		if(strcmp(f->name, name) == 0) return f;
 		else f = f->next;
 		if(f == NULL) return NULL;
@@ -86,29 +82,25 @@ static struct servFile* findFile(char* name)
 }
 
 
-static void respOk(int conn,char* message)
-{
+static void respOk(int conn,char* message) {
 	char rempty[] = {""};
 	if (message == NULL) message = rempty;
 	char* fresp = inmalloc(strlen(strsROK)+strlen(message)+15);
-	if (fresp!=NULL)
-	{
+	if (fresp!=NULL) {
 		sprintf(fresp,strsROK,"text/plain",strlen(message),message);
-	ESP_LOGV(TAG,"respOk %s",fresp);
+		ESP_LOGV(TAG,"respOk %s",fresp);
 		write(conn, fresp, strlen(fresp));
 		infree(fresp);
 	}		
 	ESP_LOGV(TAG,"respOk exit");
 }
 
-static void respKo(int conn)
-{
+static void respKo(int conn) {
 //printf("ko\n");
 	write(conn, lowmemory, strlen(lowmemory));
 }
 
-static void serveFile(char* name, int conn)
-{
+static void serveFile(char* name, int conn) {
 #define PART 1024
 #define LIMIT 128
 

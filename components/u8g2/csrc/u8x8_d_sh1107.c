@@ -280,9 +280,9 @@ static const u8x8_display_info_t u8x8_sh1107_seeed_96x96_display_info =
   /* pre_chip_disable_wait_ns = */ 10,
   /* reset_pulse_width_ms = */ 100, 	/* */
   /* post_reset_wait_ms = */ 100, /* far east OLEDs need much longer setup time */
-  /* sda_setup_time_ns = */ 50,		/* cycle time is 100ns, so use 100/2 */
-  /* sck_pulse_width_ns = */ 50,	/* cycle time is 100ns, so use 100/2, AVR: below 70: 8 MHz, >= 70 --> 4MHz clock */
-  /* sck_clock_hz = */ 8000000UL,	/* since Arduino 1.6.0, the SPI bus speed in Hz. Should be  1000000000/sck_pulse_width_ns */
+  /* sda_setup_time_ns = */ 100,		/* cycle time is 100ns, so use 100/2 */
+  /* sck_pulse_width_ns = */ 100,	/* cycle time is 100ns, so use 100/2, AVR: below 70: 8 MHz, >= 70 --> 4MHz clock */
+  /* sck_clock_hz = */ 4000000UL,	/* since Arduino 1.6.0, the SPI bus speed in Hz. Should be  1000000000/sck_pulse_width_ns */
   /* spi_mode = */ 0,		/* active high, rising edge */
   /* i2c_bus_clock_100kHz = */ 4,
   /* data_setup_time_ns = */ 40,
@@ -339,7 +339,7 @@ static const uint8_t u8x8_d_sh1107_128x128_init_seq[] = {
   
   U8X8_CA(0x0a8, 0x7f),		/* 0x03f multiplex ratio */
   //U8X8_CA(0x0d3, 0x060),		/* display offset (removed, not in datasheet ) */
-  U8X8_CA(0x0d5, 0x051),		/* clock divide ratio (0x00=1) and oscillator frequency (0x8) */
+  U8X8_CA(0x0d5, 0x050),		/* clock divide ratio (0x00=1) and oscillator frequency (0x8), changed to 0x051, issue 501 */
   U8X8_CA(0x0d9, 0x022), 		/* [2] pre-charge period 0x022/f1*/
   U8X8_CA(0x0db, 0x035), 		/* vcomh deselect level */  
   
@@ -362,9 +362,9 @@ static const u8x8_display_info_t u8x8_sh1107_128x128_display_info =
   /* pre_chip_disable_wait_ns = */ 10,
   /* reset_pulse_width_ms = */ 100, 	/* */
   /* post_reset_wait_ms = */ 100, /* far east OLEDs need much longer setup time */
-  /* sda_setup_time_ns = */ 50,		/* cycle time is 100ns, so use 100/2 */
-  /* sck_pulse_width_ns = */ 50,	/* cycle time is 100ns, so use 100/2, AVR: below 70: 8 MHz, >= 70 --> 4MHz clock */
-  /* sck_clock_hz = */ 8000000UL,	/* since Arduino 1.6.0, the SPI bus speed in Hz. Should be  1000000000/sck_pulse_width_ns */
+  /* sda_setup_time_ns = */ 100,		/* cycle time is 100ns, so use 100/2 */
+  /* sck_pulse_width_ns = */ 100,	/* cycle time is 100ns, so use 100/2, AVR: below 70: 8 MHz, >= 70 --> 4MHz clock */
+  /* sck_clock_hz = */ 4000000UL,	/* since Arduino 1.6.0, the SPI bus speed in Hz. Should be  1000000000/sck_pulse_width_ns */
   /* spi_mode = */ 0,		/* active high, rising edge */
   /* i2c_bus_clock_100kHz = */ 4,
   /* data_setup_time_ns = */ 40,

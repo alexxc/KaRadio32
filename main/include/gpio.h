@@ -40,7 +40,7 @@
 //-------------
 #define PIN_ENC_A   GPIO_NUM_16		// CLK
 #define PIN_ENC_B   GPIO_NUM_17		// DT
-#define PIN_ENC_BTN GPIO_NUM_5		// SW
+#define PIN_ENC_BTN GPIO_NUM_15		// SW
 
 // I2C lcd (and rda5807 if lcd is i2c or LCD_NONE)
 //------------------------------------------------
@@ -50,14 +50,14 @@
 
 // I2C rda5807 (if lcd is spi)
 //----------------------------
-#define PIN_SI2C_SCL GPIO_NUM_15
-#define PIN_SI2C_SDA GPIO_NUM_27
+#define PIN_SI2C_SCL GPIO_NUM_14
+#define PIN_SI2C_SDA GPIO_NUM_13
 
 // SPI lcd
 //---------
 // KSPI pins +
-#define PIN_LCD_CS	GPIO_NUM_13		//CS
-#define PIN_LCD_A0	GPIO_NUM_14		//A0 or D/C
+#define PIN_LCD_CS	GPIO_NUM_5		//CS
+#define PIN_LCD_A0	GPIO_NUM_27		//A0 or D/C
 #define PIN_LCD_RST	GPIO_NUM_2		//Reset RES RST or not used
 
 // IR Signal

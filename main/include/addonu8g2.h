@@ -19,4 +19,5 @@ void lcd_initU8g2(uint8_t* lcd_type);
 void setVolumeU8g2(uint16_t vol);
 void drawLinesU8g2();
 
+
 #endif /* ADDONU8G2_H_ */

@@ -88,8 +88,7 @@ void interrupts()
 
 bool getpinsActive() {return pinsActive;}
 
-void ClickEncoderInit(int8_t A, int8_t B, int8_t BTN)
-{
+void ClickEncoderInit(int8_t A, int8_t B, int8_t BTN) {
 	pinA = A; pinB = B; pinBTN = BTN;
 	pinsActive = LOW; delta = 0; last = 0; steps = 4; accelerationEnabled = true; button = Open;
 	doubleClickEnabled = true; buttonHeldEnabled = true;
@@ -100,18 +99,15 @@ void ClickEncoderInit(int8_t A, int8_t B, int8_t BTN)
 	gpio_conf.pull_down_en = (pinsActive == LOW) ?GPIO_PULLDOWN_DISABLE : GPIO_PULLDOWN_ENABLE;
 	gpio_conf.intr_type = GPIO_INTR_DISABLE;
 	
-  if (pinA >= 0) 
-  {
+  if (pinA >= 0) {
 	gpio_conf.pin_bit_mask = BIT(pinA);
 	ESP_ERROR_CHECK(gpio_config(&gpio_conf));
   }
-  if (pinB >= 0) 
-  {
+  if (pinB >= 0) {
 	gpio_conf.pin_bit_mask = BIT(pinB);
 	ESP_ERROR_CHECK(gpio_config(&gpio_conf));
   }
-  if (pinBTN >= 0) 
-  {
+  if (pinBTN >= 0) {
 	gpio_conf.pin_bit_mask = BIT(pinBTN);
 	ESP_ERROR_CHECK(gpio_config(&gpio_conf));
   }
@@ -239,8 +235,7 @@ void service(void)
 
 // ----------------------------------------------------------------------------
 
-int16_t getValue(void)
-{
+int16_t getValue(void) {
   int16_t val;
   
   noInterrupts();
@@ -268,8 +263,7 @@ int16_t getValue(void)
 }
 
 // ----------------------------------------------------------------------------
-Button getButton(void)
-{
+Button getButton(void) {
   noInterrupts();
   Button ret = button;
   if (button != Held && ret != Open) {

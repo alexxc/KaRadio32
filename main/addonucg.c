@@ -18,6 +18,9 @@
 #include "esp_log.h"
 #include "logo.h"
 #include "interface.h"
+
+#include "addonu8g2.h"
+
 #define TAG  "addonucg"
 
 
@@ -77,17 +80,20 @@ static char TTimeStr[15];
 
 
 ////////////////////////////////////////
+#define font_6x12 u8g2_font_6x12_t_cyrillic
+#define font_5x8 u8g2_font_5x8_t_cyrillic
+#define font_7x14 u8g2_font_7x13_t_cyrillic
+#define font_9x18 u8g2_font_10x20_t_cyrillic
+
+
 typedef enum sizefont  {small, text,middle,large} sizefont;
-void setfont(sizefont size)
-{
-//	printf("setfont size: %d, x: %d\n",size,x);
-	switch(size)
-	{
+void setfont(sizefont size) {
+	//printf("ADDONUCG setfont size: %d, x: %d\n",size,x);
+	switch(size) {
 		case small:
-		switch(x)
-		{
+		switch(x) {
 			case 320:
-			ucg_SetFont(&ucg,ucg_font_6x13_mf);
+			ucg_SetFont(&ucg,font_6x12);
 			break;
 			case 128:
 			ucg_SetFont(&ucg,ucg_font_4x6_mf);
@@ -102,8 +108,7 @@ void setfont(sizefont size)
 		}
 		break;
 		case text:
-		switch(x)
-		{
+		switch(x) {
 			case 320:
 			ucg_SetFont(&ucg,ucg_font_inr16_mf );
 			break;
@@ -161,6 +166,7 @@ void setfont(sizefont size)
 		printf("Default for size %d\n",size);
 	}
 }
+
 
 
 ////////////////////////////////////////
